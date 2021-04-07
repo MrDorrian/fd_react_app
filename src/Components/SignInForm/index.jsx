@@ -2,34 +2,43 @@ import React, { Component } from 'react';
 import styles from './SignInForm.module.css';
 import cx from 'classnames';
 
-class LoginForm extends Component {
+const initialState = {
+  email: '',
+  password: '',
+  isemailValid: true,
+  isPasswordValid: true,
+};
+class SignInForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      email: '',
-      password: '',
-    };
+    this.state = { ...initialState };
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
     console.log(this.state);
-    this.setState({ email: '', password: '' });
+    this.setState({ ...initialState });
   };
 
   handleChange = ({ target: { value, name } }) => {
-    this.setState({ [name]: value });
+    if (value.includes(' ')) {
+    } else {
+      this.setState({ [name]: value });
+    }
   };
 
   render() {
-    const { email, password } = this.state;
+    const { email, password, isemailValid, isPasswordValid } = this.state;
 
+    const emailClassNames = cx(styles.input, {
+      [styles.invalidInput]: !isemailValid,
+    });
     return (
-      <form className={styles.container}>
+      <form className={styles.container} onSubmit={this.handleSubmit}>
         <input
           onChange={this.handleChange}
           value={email}
-          className={styles.input}
+          className={emailClassNames}
           type='email'
           name='email'
           placeholder='email'
@@ -52,4 +61,4 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+export default SignInForm;
