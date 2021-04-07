@@ -1,6 +1,6 @@
 import React from 'react';
-import { format, getWeek, getYear } from 'date-fns';
-import Week from '../Week';
+import { format } from 'date-fns';
+import Month from '../Month';
 
 import styles from '../Calendar.module.css';
 
@@ -20,16 +20,6 @@ const WeekDays = () => {
 
 const CalendarBody = (props) => {
   const { currentDay } = props;
-  const week = getWeek(currentDay);
-  const year = getYear(currentDay);
-
-  const yearArray = [];
-
-  for (let i = 0; i < 6; i++) {
-    yearArray.push(
-      <Week key={`${year} ${week}`} year={year} week={week + i} />
-    );
-  }
 
   return (
     <div className={styles.monthBody}>
@@ -40,7 +30,9 @@ const CalendarBody = (props) => {
         <thead>
           <WeekDays />
         </thead>
-        <tbody>{[yearArray]}</tbody>
+        <tbody>
+          <Month currentDay={currentDay} />
+        </tbody>
       </table>
     </div>
   );

@@ -1,17 +1,26 @@
 import React, { Component } from 'react';
-import UserCard from './UserCard';
+import UserCard, { userPropType } from './UserCard';
+import PropTypes from 'prop-types';
 
 class UserList extends Component {
-  constructor(props) {
-    super(props);
-     }
+  userSelector = (id) => {
+    const { users, setUsers } = this.props;
+    const newUsers = [...users]; //Поверхностная копия
+
+    const mapNewUsers = (user) => ({
+      ...user,
+      isSelected: id === user.id ? !user.isSelected : user.isSelected,
+    });
+
+    setUsers(newUsers.map(mapNewUsers));
+  };
 
   mapUsers = (user) => (
-    <UserCard key={user.id} user={user} isChecked={user.isChecked} />
+    <UserCard key={user.id} user={user} userSelector={this.userSelector} />
   );
 
   render() {
-    const { users } = this.state;
+    const { users } = this.props;
 
     return (
       <section>
@@ -21,5 +30,10 @@ class UserList extends Component {
     );
   }
 }
+
+UserList.propTypes = {
+  users: PropTypes.arrayOf(userPropType).isRequired,
+  setUsers: PropTypes.func,
+};
 
 export default UserList;

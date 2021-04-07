@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import Aloha from '../Greeting';
+import Aloha from '../Aloha';
 
 class AlohaDashboard extends Component {
   mapAloha = (user) => (

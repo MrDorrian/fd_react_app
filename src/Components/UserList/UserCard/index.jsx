@@ -1,13 +1,18 @@
+import PropTypes from 'prop-types';
+
 function UserCard(props) {
   const {
-    user: { id, firstName, lastName, url },
-    isChecked,
+    user: { id, firstName, lastName, isSelected },
+    userSelector,
   } = props;
 
   const style = {
-    border: isChecked ? '4px solid' : undefined,
+    border: isSelected ? '4px solid' : undefined,
   };
 
+  const btnHandler = () => {
+    userSelector(id);
+  };
 
   return (
     <article style={style}>
@@ -15,16 +20,20 @@ function UserCard(props) {
         Full Name: {firstName} {lastName}
       </h1>
       <p>ID: {id}</p>
-      <img src={url} alt={firstName} />
-      <button
-        onClick={(e) => {
-          switchCard();
-        }}
-      >
-        Select
-      </button>
+      <button onClick={btnHandler}>Select User</button>
     </article>
   );
 }
+export const userPropType = PropTypes.shape({
+  id: PropTypes.number.isRequired,
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
+  isSelected: PropTypes.bool,
+}).isRequired;
+
+UserCard.propTypes = {
+  user: userPropType,
+  userSelector: PropTypes.func,
+};
 
 export default UserCard;

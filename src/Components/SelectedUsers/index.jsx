@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { userPropType } from './../UserList/UserCard';
 
 const SelectedUsers = (props) => {
   const { users = [] } = props;
@@ -14,5 +16,11 @@ const SelectedUsers = (props) => {
     </div>
   );
 };
+SelectedUsers.defaultProps = {
+  users: [],
+};
 
+SelectedUsers.propTypes = {
+  users: PropTypes.arrayOf(userPropType),
+};
 export default SelectedUsers;
