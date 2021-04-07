@@ -23,6 +23,7 @@ class Aloha extends Component {
           {isGreeting ? 'Привет' : 'Пока'} {name}
         </h1>
         {children}
+        <button>DELETE</button>
       </div>
     );
   }

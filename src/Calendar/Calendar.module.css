@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  margin: 10px;
+  border: 7px solid rgb(0, 143, 135);
+  width: 400px;
+}
+
+.monthBody {
+  text-align: center;
+  margin: 10px 0px 10px 20px;
+  font-weight: bold;
+}
+
+.currentDayBody {
+  background-color: rgb(56, 206, 196);
+  width: 50%;
+  color: #ffffff;
+  text-align: center;
+}
+.currentDay {
+  margin-top: 10px;
+}
+.currentDayNumber {
+  font-size: 8em;
+}
+.currentMonth {
+  color: rgb(0, 153, 145);
+}
+
+.weekDays {
+  color: red;
+}
+.dayOfWeek {
+  color: grey;
+}

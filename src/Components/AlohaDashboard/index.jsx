@@ -4,10 +4,17 @@ import Aloha from '../Greeting';
 class AlohaDashboard extends Component {
   mapAloha = (user) => (
     <li>
-      <Aloha name={`${user.firstName} ${user.lastName}`} />
+      <Aloha key={user.id} name={`${user.firstName} ${user.lastName}`} />
     </li>
   );
+  deleteUser = (idToDelete) => {
+    const { users } = this.props;
+    const usersCopy = JSON.parse(JSON.stringify(users));
 
+    this.setState({
+      users: usersCopy.filter((user) => user.id !== idToDelete),
+    });
+  };
   render() {
     const { users } = this.props;
 
