@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './StopWatch.module.css';
+import styles from './StopWatch.module.scss';
 
 class StopWatch extends Component {
   constructor(props) {
@@ -57,7 +57,10 @@ class StopWatch extends Component {
     const { time, isRunning } = this.state;
     return (
       <article className={styles.container}>
-        <h1 className={styles.currentTime}>{time.toLocaleTimeString('it-IT')}</h1>
+        <h2>Stop Watch</h2>
+        <h1 className={styles.currentTime}>
+          {time.toLocaleTimeString('it-IT')}
+        </h1>
         <div className='controls'>
           {!isRunning ? (
             <button onClick={this.start}>Start</button>

@@ -1,10 +1,10 @@
 import './App.css';
-import Calendar from './Calendar';
+import StopWatch from './Components/StopWatch';
 
 function App() {
   return (
     <>
-      <Calendar />
+      <StopWatch />
     </>
   );
 }
