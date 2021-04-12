@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { getUsers } from '../../api';
+import Spinner from '../Spinner';
 
 class UsersLoader extends Component {
   constructor (props) {
@@ -7,17 +9,27 @@ class UsersLoader extends Component {
       users: [],
       isFetching: true,
       isError: false,
+      currentPage: 1,
     };
   }
 
   componentDidMount () {
-    fetch('https://randomuser.me/api/?page=1&results=10&seed=FD2020-2')
-      .then(res => res.json())
+    this.load();
+  }
+
+  componentDidUpdate (prevProps, prevState) {
+    if (prevState.currentPage !== this.state.currentPage) {
+      this.load();
+    }
+  }
+
+  load = () => {
+    const { currentPage } = this.state;
+
+    getUsers({ page: currentPage })
       .then(data => {
-        // const { results } = data;
         this.setState({
           users: data.results,
-          isFetching: false,
         });
       })
       .catch(() => {
@@ -30,14 +42,22 @@ class UsersLoader extends Component {
           isFetching: false,
         });
       });
-  }
+  };
+
+  prevPage = () => this.setState({ currentPage: this.state.currentPage - 1 });
+  nextPage = () => this.setState({ currentPage: this.state.currentPage + 1 });
 
   render () {
     const { users, isFetching, isError } = this.state;
+
     return (
       <div>
         <h1>USER LIST</h1>
-        {isFetching && <div>Loading....</div>}
+        <div>
+          <button onClick={this.prevPage}>Prev</button>
+          <button onClick={this.nextPage}>Next</button>
+        </div>
+        {isFetching && <Spinner />}
         {isError && <div>ERROR</div>}
         <ul>
           {users.map(user => {
