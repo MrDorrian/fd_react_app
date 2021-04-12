@@ -1,0 +1,10 @@
+.wrapper {
+  display: flex;
+
+  > div {
+    margin-left: 20px;
+    padding: 20px;
+    border: 1px solid red;
+    font-size: 2em;
+  }
+}

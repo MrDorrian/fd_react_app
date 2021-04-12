@@ -11,10 +11,10 @@
   margin: 10px 0;
 }
 
-.validInput{
+.validInput {
   border: 2px solid green;
 }
 
-.invalidInput{
+.invalidInput {
   border: 2px solid red;
 }

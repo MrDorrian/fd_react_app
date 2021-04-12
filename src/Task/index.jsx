@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 class Counter extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       isAdding: true,
@@ -33,7 +33,7 @@ class Counter extends Component {
     this.setState({ step: Number(value) });
   };
 
-  render() {
+  render () {
     const { count, step, isAdding } = this.state;
     return (
       <div>

@@ -2,7 +2,7 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Aloha extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       isGreeting: true,
@@ -18,7 +18,7 @@ class Aloha extends Component {
     const { deleteUser, id } = this.props;
     deleteUser(id);
   };
-  render() {
+  render () {
     const { isGreeting } = this.state;
     const { name, isExciting } = this.props;
 

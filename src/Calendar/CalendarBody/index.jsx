@@ -2,7 +2,7 @@ import React from 'react';
 import { format } from 'date-fns';
 import Month from '../Month';
 
-import styles from '../Calendar.module.css';
+import styles from '../Calendar.module.scss';
 
 const WeekDays = () => {
   return (
@@ -18,7 +18,7 @@ const WeekDays = () => {
   );
 };
 
-const CalendarBody = (props) => {
+const CalendarBody = props => {
   const { currentDay } = props;
 
   return (
@@ -28,7 +28,7 @@ const CalendarBody = (props) => {
       </div>
       <table>
         <thead>
-          <WeekDays />
+          <WeekDays currentDay={currentDay} />
         </thead>
         <tbody>
           <Month currentDay={currentDay} />

@@ -2,7 +2,7 @@ import React from 'react';
 import Week from '../Week';
 import { getWeek, getYear } from 'date-fns';
 
-const Month = (props) => {
+const Month = props => {
   const { currentDay } = props;
   const week = getWeek(currentDay);
   const year = getYear(currentDay);
@@ -11,7 +11,12 @@ const Month = (props) => {
 
   for (let i = 0; i < 6; i++) {
     yearArray.push(
-      <Week key={`${year}-${week}`} year={year} week={week + i} />
+      <Week
+        key={`${year}-${week}`}
+        year={year}
+        week={week + i}
+        currentDay={currentDay}
+      />
     );
   }
 

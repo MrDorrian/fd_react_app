@@ -31,5 +31,16 @@
   color: red;
 }
 .dayOfWeek {
-  color: grey;
+  color: transparent;
+}
+
+.currentMonthDay {
+  color: green;
+}
+
+.dayOfMonth {
+  color: red;
+  border: 5px solid red;
+  border-radius: 50%;
+  padding: 10px;
 }

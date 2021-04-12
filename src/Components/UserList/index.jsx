@@ -3,11 +3,11 @@ import UserCard, { userPropType } from './UserCard';
 import PropTypes from 'prop-types';
 
 class UserList extends Component {
-  userSelector = (id) => {
+  userSelector = id => {
     const { users, setUsers } = this.props;
     const newUsers = [...users]; //Поверхностная копия
 
-    const mapNewUsers = (user) => ({
+    const mapNewUsers = user => ({
       ...user,
       isSelected: id === user.id ? !user.isSelected : user.isSelected,
     });
@@ -15,11 +15,11 @@ class UserList extends Component {
     setUsers(newUsers.map(mapNewUsers));
   };
 
-  mapUsers = (user) => (
+  mapUsers = user => (
     <UserCard key={user.id} user={user} userSelector={this.userSelector} />
   );
 
-  render() {
+  render () {
     const { users } = this.props;
 
     return (

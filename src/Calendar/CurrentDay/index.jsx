@@ -1,9 +1,9 @@
 import React from 'react';
 import { format } from 'date-fns';
 
-import styles from '../Calendar.module.css';
+import styles from '../Calendar.module.scss';
 
-const CurrentDay = (props) => {
+const CurrentDay = props => {
   const { currentDay } = props;
   return (
     <div className={styles.currentDayBody}>

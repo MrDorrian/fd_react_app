@@ -9,12 +9,12 @@ const initialState = {
   isPasswordValid: true,
 };
 class SignInForm extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = { ...initialState };
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     event.preventDefault();
     console.log(this.state);
     this.setState({ ...initialState });
@@ -27,7 +27,7 @@ class SignInForm extends Component {
     }
   };
 
-  render() {
+  render () {
     const { email, password, isemailValid, isPasswordValid } = this.state;
 
     const emailClassNames = cx(styles.input, {
