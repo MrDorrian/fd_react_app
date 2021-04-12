@@ -1,13 +1,18 @@
 import './App.css';
-import Aloha from './Components/Aloha';
-import UserCard from './Components/UserList/UserCard';
-import Calendar from './Calendar';
-import UserList from './Components/UserList';
-import Counter from './Task';
-import FlexContainer from './FlexContainer';
+import UsersLoader from './Components/UsersLoader';
+// import Aloha from './Components/Aloha';
+// import UserCard from './Components/UserList/UserCard';
+// import Calendar from './Calendar';
+// import UserList from './Components/UserList';
+// import Counter from './Task';
+// import FlexContainer from './FlexContainer';
 
 function App () {
-  return <Calendar />;
+  return (
+    <>
+      <UsersLoader/>
+    </>
+  );
 }
 
 export default App;
